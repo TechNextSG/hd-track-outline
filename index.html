@@ -154,7 +154,9 @@ html:has(#themeDark:checked) .themeswitch label[for=themeDark]{background:var(--
 .gather{flex:var(--span,1) 1 calc(14px + var(--span,1) * (2 * var(--step-x) + 2px) + (var(--span,1) - 1) * 24px);min-width:0;position:relative;display:grid;grid-template-columns:repeat(var(--span,1),minmax(0,1fr));grid-template-rows:auto 1fr;column-gap:24px;row-gap:6px;border:2px dashed var(--brand);border-radius:12px;padding:6px 5px 5px}
 .gather::after{content:"";position:absolute;right:-22px;top:50%;width:15px;height:2px;background:var(--edge)}
 .gather-tag{grid-column:1/-1;padding:0 3px;font-size:.6rem;line-height:1.3;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--text-2)}
-.chip-gather{background:transparent;border:2px dashed var(--brand)}
+/* the key explains the one encoding that is not labelled in place: filled vs outlined pills.
+   Track colours are not keyed; the brand has three blues and every lane names itself. */
+.key .flag{display:inline-block;font-size:.62rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:20px;white-space:nowrap}
 
 .l1 .lane-n{color:var(--accent-1)} .l1 .step{border-top:3px solid var(--accent-1)}
 .l2 .lane-n{color:var(--accent-2)} .l2 .step{border-top:3px solid var(--accent-2)}
@@ -292,13 +294,9 @@ html:has(#themeDark:checked) .lane-n{color:var(--text)}
 
 <div class="wrap">
 
-<div class="key">
-  <span><i class="chip" style="background:var(--accent-1)"></i> AI Assistant</span>
-  <span><i class="chip" style="background:var(--accent-2)"></i> Email</span>
-  <span><i class="chip" style="background:var(--accent-3)"></i> Odoo</span>
-  <span><i class="chip" style="background:var(--accent-4)"></i> ERP</span>
-  <span><i class="chip chip-gather"></i> information gathering &mdash; the stage we are in</span>
-  <span><i class="chip" style="background:var(--brand)"></i> done or under way</span>
+<div class="key" role="note" aria-label="How to read the status labels">
+  <span><span class="flag f-done">done</span> done, started or under way</span>
+  <span><span class="flag f-wait">needs access</span> waiting on access, credentials or a decision</span>
 </div>
 
 <section class="lane l1" aria-labelledby="t1">
